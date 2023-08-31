@@ -3,7 +3,7 @@
 const showCategories = (categoriesData) => {
 
    const categoriesContainer = document.getElementById('categories-container');
-   
+
    categoriesData.forEach(categoryData => {
       const categoryDiv = document.createElement('div');
       categoryDiv.innerHTML =
@@ -19,7 +19,7 @@ const showCategories = (categoriesData) => {
    // active first category
    const categoryItem = document.querySelectorAll('.category');
    categoryItem[0].classList.add('active');
-   
+
 }
 
 /* Display Video items category wise */
@@ -35,8 +35,6 @@ const getCategorydata = async (categoryId, target) => {
    if (target) {
       target.classList.add('active')
    }
-   console.log(target);
-   console.log(categoryId);
 
    showCards(data.data);
 }
