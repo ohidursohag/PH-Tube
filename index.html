@@ -1,15 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- google Fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+   <!-- Tailwind & daisyUi -->
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
    <script src="https://cdn.tailwindcss.com"></script>
+   <!-- favicon -->
    <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
    <title>PH Tube</title>
+   <!-- custom tailwind -->
+   <script>
+      tailwind.config = {
+         theme: {
+            extend: {
+               colors: {
+                  primary: '#FF1F3D',
+                  secondary: 'rgba(37,37,37,0.2)',
+               }
+            }
+         }
+      }
+   </script>
+   <!-- Custom Css -->
+   <style>
+      #btn-sort.active,
+      #categories-container .active {
+         color: white;
+         background-color: #FF1F3D;
+      }
+   </style>
 </head>
-<body>
 
+<body class="container mx-auto px-4 font-['Inter',sans-serif]">
+   <!-- header section start here -->
+   <header class="mb-14">
+      <!-- navbar section start here -->
+      <nav class="flex  gap-4 relative sm:flex-row justify-between items-center mt-[50px] mb-20 sm:mb-8">
+         <figure class="sm:w-[33%]">
+            <img src="./image/Logo.png" alt="">
+         </figure>
+         <div class="sm:w-[33%] text-center absolute left-[calc(50%-70px)] top-16 sm:static">
+            <button id="btn-sort" onclick="sortByView(this)"
+               class=" btn btn-neutral bg-secondary  hover:bg-primary hover:text-white text-lg text-[#252525] normal-case rounded-md border-none ">Sort
+               by view</button>
+         </div>
+         <div onclick="goBlogPage()"  class="text-right sm:w-[33%] ">
+            <button id=""
+               class="btn btn-primary   bg-primary hover:bg-primary text-white text-lg  normal-case rounded-md border-none active active:bg-primary "
+               active>Blog</button>
+         </div>
+      </nav>
+      <hr class="border border-secondary">
+      <!-- navbar section end here -->
+
+      <!-- categories section start here -->
+      <section id="categories-container"
+         class="w-[80%]  mx-auto mt-5 grid grid-cols-2 gap-3 sm:flex justify-center items-center sm:gap-6">
+         <!-- categories items append here-->
+      </section>
+      <!-- categories section end here -->
+   </header>
+   <!-- header section end here -->
+
+   <!-- main section start here -->
+   <!-- Cards section -->
+   <section id="cards-container" class="">
+      <div class="max-w-[350px]">
+         <figure class="mb-5 rounded-lg">
+            <img class="w-full rounded-lg" src="./thumbnil.png" alt="">
+         </figure>
+         <div class="flex gap-4">
+            <figure class="w-[25%]">
+               <img class="rounded-full " src="./olivia.jpg" alt="">
+            </figure>
+            <div class="">
+               <h3 class="font-bold leading-6 mb-3">Building a Winning UX Strategy Using the Kano Model</h3>
+               <div class="flex items-center gap-3 mb-1">
+                  <span class="text-sm">Awlad Hossain</span>
+                  <span><img src="./image/bluetik.png" alt=""></span>
+               </div>
+               <div class="text-sm">
+                  <span>91K</span>
+                  views
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!-- main section end here -->
    <!-- Script -->
+   <script src="./JS/utilitis.js"></script>
    <script src="./JS/script.js"></script>
 </body>
+
 </html>
