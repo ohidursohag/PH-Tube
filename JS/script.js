@@ -1,6 +1,7 @@
 // Show items on load
 window.onload = () => {
    getCategories()
+   getCategorydata('1000')
 }
 
 // fetch categoris from api
@@ -11,8 +12,10 @@ const getCategories = async () => {
 }
 
 
-// const sortByView = (target) => {
-//    target.classList.add('active')
-//    // target.active = true;
-//    console.log('object');
-// }
+const sortByView = (target) => {
+   target.classList.add('active')
+   // target.active = true;
+   console.log(n);
+   console.log(target);
+}
+

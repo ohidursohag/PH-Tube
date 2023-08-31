@@ -1,53 +1,74 @@
-// go to blog page
-const goBlogPage = () => {
-   console.log('blogPage');
-   window.location.href = './blog.html';
-}
-// go to Home Page
-const goHomePage = () => {
-   console.log('blogPage');
-   window.location.href = './index.html';
-}
 
 // display categories
 const showCategories = (categoriesData) => {
-   // console.log(categoriesData[0].category);
+
    const categoriesContainer = document.getElementById('categories-container');
+   
    categoriesData.forEach(categoryData => {
       const categoryDiv = document.createElement('div');
       categoryDiv.innerHTML =
          `
-         <div onclick="getCategorydata('${categoryData.category_id}')"
-            class="relative w-max mx-auto sm:mx-0 rounded px-6 py-[2px] hover:bg-primary hover:text-white font-semibold bg-[rgba(37,37,37,0.15)] text-[rgba(37,37,37,0.6)] cursor-pointer ">
+         <div onclick="getCategorydata('${categoryData.category_id}',this)"
+            class=" category relative w-max mx-auto sm:mx-0 rounded px-6 py-[2px] hover:bg-primary hover:text-white font-semibold bg-[rgba(37,37,37,0.15)] text-[rgba(37,37,37,0.6)] cursor-pointer ">
             ${categoryData.category}
          </div>
          `;
       categoriesContainer.appendChild(categoryDiv);
    });
+
+   // active first category
+   const categoryItem = document.querySelectorAll('.category');
+   categoryItem[0].classList.add('active');
+   
 }
 
 /* Display Video items category wise */
 // fetch category data by category Id
-const getCategorydata = async (categoryId) => {
+const getCategorydata = async (categoryId, target) => {
    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await response.json();
-   // console.log(data.data);
+
+   const categoryItem = document.querySelectorAll('.category');
+   categoryItem.forEach(element => {
+      element.classList.remove('active')
+   })
+   if (target) {
+      target.classList.add('active')
+   }
+   console.log(target);
+   console.log(categoryId);
+
    showCards(data.data);
 }
 
 // creat Dynamic cards category wise
-
 const showCards = (cardsData) => {
    const cardsContainer = document.getElementById('cards-container');
-   console.log(cardsData);
-
    cardsContainer.innerHTML = '';
-   
-   cardsData.forEach((card) => {
+   // console.log(cardsData.length);
+
+
+   if (!cardsData.length) {
+      // console.log('Data Nai');
       const cardDiv = document.createElement('div');
       cardDiv.innerHTML =
          `
-         <div class="max-w-[350px]">
+         <div class="h-[calc(100vh-350px)] flex justify-center items-center">
+            <div>
+               <figure>
+                  <img class="mx-auto" src="./image/warning_Icon.png" alt="">
+               </figure>
+               <h1 class="text-2xl md:text-4xl text-center font-bold mt-3">Oops!! Sorry, There is no <br> content here</h1>
+            </div>
+         </div>
+         `;
+      cardsContainer.appendChild(cardDiv);
+   } else {
+      cardsData.forEach((card) => {
+         const cardDiv = document.createElement('div');
+         cardDiv.innerHTML =
+            `
+         <div class="max-w-[350px] sm:max-w-[300px] md:max-w-[325px] lg:max-w-[310px]">
          <figure class="mb-5 rounded-lg">
             <img class="w-full rounded-lg" src="./thumbnil.png" alt="">
          </figure>
@@ -69,6 +90,20 @@ const showCards = (cardsData) => {
          </div>
       </div>
          `;
-      cardsContainer.appendChild(cardDiv);
-   });
+         cardsContainer.appendChild(cardDiv);
+      });
+   }
+
+}
+
+
+// go to blog page
+const goBlogPage = () => {
+   console.log('blogPage');
+   window.location.href = './blog.html';
+}
+// go to Home Page
+const goHomePage = () => {
+   console.log('blogPage');
+   window.location.href = './index.html';
 }

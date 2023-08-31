@@ -34,11 +34,13 @@
       #categories-container .active {
          color: white;
          background-color: #FF1F3D;
+         border-radius: 4px;
+         
       }
    </style>
 </head>
 
-<body class="container mx-auto px-4 font-['Inter',sans-serif]">
+<body class="container mx-auto px-4 sm:px-2 md:px-4 font-['Inter',sans-serif]">
    <!-- header section start here -->
    <header class="mb-14">
       <!-- navbar section start here -->
@@ -51,8 +53,8 @@
                class=" btn btn-neutral bg-secondary  hover:bg-primary hover:text-white text-lg text-[#252525] normal-case rounded-md border-none ">Sort
                by view</button>
          </div>
-         <div onclick="goBlogPage()"  class="text-right sm:w-[33%] ">
-            <button id=""
+         <div class="text-right sm:w-[33%] ">
+            <button onclick="goBlogPage()"
                class="btn btn-primary   bg-primary hover:bg-primary text-white text-lg  normal-case rounded-md border-none active active:bg-primary "
                active>Blog</button>
          </div>
@@ -71,28 +73,8 @@
 
    <!-- main section start here -->
    <!-- Cards section -->
-   <section id="cards-container" class="">
-      <div class="max-w-[350px]">
-         <figure class="mb-5 rounded-lg">
-            <img class="w-full rounded-lg" src="./thumbnil.png" alt="">
-         </figure>
-         <div class="flex gap-4">
-            <figure class="w-[25%]">
-               <img class="rounded-full " src="./olivia.jpg" alt="">
-            </figure>
-            <div class="">
-               <h3 class="font-bold leading-6 mb-3">Building a Winning UX Strategy Using the Kano Model</h3>
-               <div class="flex items-center gap-3 mb-1">
-                  <span class="text-sm">Awlad Hossain</span>
-                  <span><img src="./image/bluetik.png" alt=""></span>
-               </div>
-               <div class="text-sm">
-                  <span>91K</span>
-                  views
-               </div>
-            </div>
-         </div>
-      </div>
+   <section id="cards-container" class="flex flex-wrap justify-center items-center mb-16 gap-y-10 sm:gap-x-3 md:gap-x-4">
+
    </section>
    <!-- main section end here -->
    <!-- Script -->
