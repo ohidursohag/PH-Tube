@@ -1,10 +1,8 @@
 // Show items on load
 window.onload = () => {
    getCategories();
-   getCategorydata('1000');
-   
+   getCategorydata('1000');    
 }
-
 
 // fetch categoris from api
 const getCategories = async () => {
@@ -13,19 +11,11 @@ const getCategories = async () => {
    showCategories(data.data);
 };
 
+// items Short By View 
+const ShortItems = async (isSort) => {
+   showCards(itemSort,isSort)
+}
 
-const sortByView = (target) => {
-   
-
-      if (target.classList.contains('active')) {
-         target.classList.remove('active')
-      } else {
-         target.classList.add('active')
-      }
-
-   // target.active = true;
-
-};
 
 
 
