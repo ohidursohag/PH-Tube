@@ -1,0 +1,5 @@
+What is REST API?
+
+REST stands for <strong>Representational State Transfer</strong>. This means that when a client requests a resource using a REST API, the server transfers back the current state of the resource in a standardized representation.
+
+

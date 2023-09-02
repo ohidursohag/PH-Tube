@@ -49,8 +49,200 @@
       <!-- navbar section end here -->
 
       <!-- main section start here -->
-      <main>
+      <main class="space-y-10 mb-14">
+         <!-- blog 1 -->
+         <section class="mb-10">
+            <div class="flex gap-3">
+               <figure class="w-[50px] h-[50px] rounded-full font-semibold">
+                  <img class="h-[50px] w-[50px] object-center object-fill rounded-full ring-1 ring-black" src="./image/bloger.jpg"
+                     alt="">
+               </figure>
+               <div>
+                  <h5 class="font-semibold">Ohidur Rahaman Sohag</h5>
+                  <span><span class="font-medium">Date:</span> 2/9/2023</span>
+               </div>
+            </div>
+            <hr class="w-[250px] border-2 border-primary rounded-full mt-2 mb-5">
+            <div>
+               <h3 class="text-2xl font-semibold border-b-[2px] w-max mb-1">Discussion of the scope of <code>var</code>, <code>let</code>, <code>const</code></h3>
+               <p>
+                  <span class="font-semibold text-xl">variable scopes in JavaScript:</span> <br>
+                  There are three types of variable scopes in JavaScript- Global scope, Function scope and Block scope. <br>
+                  <span class="font-semibold">Global scope:</span> Variables which are declared outside of any function or block have global scope. They can be accessed from
+                  anywhere in the code. <br>
+                  <span class="font-semibold">Function scope:</span> Variables which are declared inside a function have function scope. They can only be accessed within
+                  that function. <br>
+                  <span class="font-semibold">Block scope:</span> Variables declared inside a block (with a pair of '{}' braket ,such as an if statement or a for loop) have
+                  block scope. They can only be accessed within the block they are declared in.
+               </p>
+               <p>
+                  <span class="font-semibold text-xl">scope of var, let, const: </span> <br>
+                  The keywords var, let, and const are used to declare variables in JavaScript. <br>
+                  <span class="font-semibold">var scope:</span> The scope of a variable declared with var is function scope <br>
+                  <span class="font-semibold">let scope:</span> The scope of a variable declared with var is block scope <br>
+                  <span class="font-semibold">const scope:</span> The scope of a variable declared with var is block scope
+               </p>
+               <div>
+                  <br>
+                  <span class="font-semibold">Example:</span><br><br>
+                  <code>
+                     var a = 3; // Global scoped can be access from any where <br>
+                     let b = 5; // Global scoped can be access from any where <br>
+                     const c = 2; // Global scoped can be access from any where <br> <br>
+                     
+                     function compare(){ // function scope, also a block scope <br>
 
+                     var d = 7; // function scoped can't be access from outside of this function<br>
+                     let sum = 0; // block scoped can't be access from outside of this function<br>
+                     if (a < b){<br> const e=7; // block scoped can't be access from outside of this function <br>
+                     sum = b + e;<br> } <br>
+                     console.log(sum); //12 <br>
+                  } <br>
+                     console.log(sum); // error cause sum is block scoped
+                  </code>
+               </div>
+            </div>
+         </section>
+         <!-- blog 2 -->
+         <section>
+            <div class="flex gap-3">
+               <figure class="w-[50px] h-[50px] rounded-full font-semibold">
+                  <img class="h-[50px] w-[50px] object-center object-fill rounded-full ring-1 ring-black" src="./image/bloger.jpg"
+                     alt="">
+               </figure>
+               <div>
+                  <h5 class="font-semibold">Ohidur Rahaman Sohag</h5>
+                  <span><span class="font-medium">Date:</span> 2/9/2023</span>
+               </div>
+            </div>
+            <hr class="w-[250px] border-2 border-primary rounded-full mt-2 mb-5">
+
+            <div>
+               <h3 class="text-2xl font-semibold border-b-[2px] w-max mb-1">Cases of getting <code>null</code> and
+               <code>undefined</code>
+               </h3>
+               
+               <p>
+                  The values <code>null</code> and <code>undefined</code> are special values in JavaScript that represent the absence of a value. <br>
+                  <code class="font-semibold">null</code> is used to represent the intentional absence of a value. For example, we can assign the value <code>null</code> to a variable to indicate that the variable does not have a value yet. <br>
+                  <code class="font-semibold">undefined</code> is used to represent the unintentional absence of a value. For example, a variable that has not been assigned a value
+                  has the value <code>undefined</code>. <br>
+                  It is important to note that <code>null</code> and <code>undefined</code> are not the same thing. <code>null</code> is a value, while <code>undefined</code> is not a value.
+                  This means that <code>null</code> can be compared to other values, while <code>undefined</code> can't. <br><br>
+               </p>
+               <p>
+                  <span class="font-semibold">Ways to get undefined:</span> <br>
+                  <ol class="list-decimal ml-4">
+                     <li>variable that is not innitialized will give <code>undefined</code> <br><br>
+                        <code>
+                           let first; //undefined
+                        </code>
+                     </li> <br>
+                     <li>
+                        function with no return <br><br>
+                        <code>
+                           function second(a, b) { <br>
+                           const total = a + b; <br>
+                           } <br>
+                           const result = second(5, 7); <br>
+                           console.log(result);//undefined
+                        </code>
+                     </li> <br>
+                     <li>
+                        function parameter that will not pass in argument will be un defined <br><br>
+                        <code>
+                           function third(a, b, c, d) {<br>
+                           const total = a + b + c + d; <br>
+                           console.log(a, b, c, d); //a=1, b=5, c & d = undefined <br>
+                           } <br>
+                           third(1, 5);
+                        </code>
+                     </li><br>
+                     <li>
+                        if function does not return any value(only return; keyword ) then will return undefined<br> <br>
+                        <code>
+                           function noNegative(a,b) { <br>
+                           if (a < 0 || b < 0) { <br>
+                               return; <br>
+                              } <br>
+                              return a + b; <br>
+                            } <br>
+                            const total=noNegative(5, 7); //12 <br>
+                            const total2=noNegative(5, -7);<br>
+                           console.log(total2); //undefined
+                        </code>
+                     </li> <br>
+                     <li>
+                        property that doesnot exists on an object will give undefined <br><br>
+                        <code>
+                           const fifth = { name: 'Sohag', age: 29 }; <br>
+                           console.log(fifth.name); //Sohag <br>
+                           console.log(fifth.job); //undefined <br>
+                        </code>
+                     </li> <br>
+                     <li>
+                        accessing array elements outside of the index renge will give undefined <br><br>
+                        <code>
+                           const sixth = [1, 2, 5, 3, 6]; <br>
+                           console.log(sixth[4]); //6 <br>
+                           console.log(sixth[5]); //undefined <br>
+
+                        </code>
+                     </li> <br>
+                     <li>
+                        deleting an element inside an array <br><br>
+                        <code>
+                           const seventh = [1, 2, 5, 3, 6]; <br>
+                           delete seventh[1]; // will creat a undefines hole in the array <br>
+                           console.log(seventh); // [1, undefined, 5, 3, 6]
+                        </code>
+                     </li> <br>
+                     <li>
+                        set value directly to undefined <br><br>
+                        <code>
+                           const eighth = undefined; <br>
+                           console.log(eighth); //undefined <br>
+                           const ninth = null; <br>
+                           console.log(ninth);//null
+                        </code>
+                     </li> <br>
+                  </ol>
+               </p>
+            </div>
+         </section>
+         <!-- blog 3 -->
+         <section>
+            <div class="flex gap-3">
+               <figure class="w-[50px] h-[50px] rounded-full font-semibold">
+                  <img class="h-[50px] w-[50px] object-center object-fill rounded-full ring-1 ring-black" src="./image/bloger.jpg"
+                     alt="">
+               </figure>
+               <div>
+                  <h5 class="font-semibold">Ohidur Rahaman Sohag</h5>
+                  <span><span class="font-medium">Date:</span> 2/9/2023</span>
+               </div>
+            </div>
+            <hr class="w-[250px] border-2 border-primary rounded-full mt-2 mb-5">
+
+            <div>
+               <h3 class="text-2xl font-semibold border-b-[2px] w-max mb-1">What is REST API?
+               </h3>
+               <p>
+                  REST stands for <strong>Representational State Transfer</strong>. This means that when a client requests a resource using a REST API, the server transfers back the current state of the resource in a standardized representation.  <br>
+               </p>
+               <p>
+                  The method is the type of request we send to the server. The four main resource methods that are associated with REST
+                  APIs are: <br>
+                  
+                  <strong>GET:</strong> This method allows for the server to find the data we requested and sends it back to us. <br>
+                  <strong>PUT:</strong> If we perform the 'PUT' request, then the server will update an entry in the database. <br>
+                  <strong>PATCH:</strong> We can perform the 'PATCH' request to partially update an existance resource in the database <br>
+                  <strong>POST:</strong> This method permits the server to create a new entry in the database. <br>
+                  <strong>DELETE:</strong> This method allows the server to delete an entry in the database. <br>
+               </p>
+
+            </div>
+         </section>
       </main>
       <!-- main section end here -->
       <script src="./JS/utilitis.js"></script>

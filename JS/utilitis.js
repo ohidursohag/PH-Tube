@@ -1,4 +1,4 @@
-const timeUndefinedElementId = [];
+
 // display categories
 const showCategories = (categoriesData) => {
 
@@ -27,6 +27,7 @@ const showCategories = (categoriesData) => {
 const getCategorydata = async (categoryId, target) => {
    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await response.json();
+   showCards(data.data);
 
    const categoryItem = document.querySelectorAll('.category');
    categoryItem.forEach(element => {
@@ -36,14 +37,18 @@ const getCategorydata = async (categoryId, target) => {
       target.classList.add('active')
    }
 
-   showCards(data.data);
+
 }
 
 // creat Dynamic cards category wise
 const showCards = (cardsData) => {
    const cardsContainer = document.getElementById('cards-container');
    cardsContainer.innerHTML = '';
-   // console.log(cardsData.length);
+
+   console.log(cardsData);
+   cardsData.forEach((card, index) => {
+      console.log(cardsData[index].others?.views.slice(0, -1));
+   })
 
 
    if (!cardsData.length) {
@@ -62,10 +67,10 @@ const showCards = (cardsData) => {
          `;
       cardsContainer.appendChild(cardDiv);
    } else {
-      let count = 0;
       cardsData.forEach((card) => {
          // console.log(card);
-         
+         // console.log(card?.others?.views.slice(0, -1));
+
          const timeInHours = secondToHoursAndMinites(card?.others?.posted_date);
          // console.log(timeInHours);
          const cardDiv = document.createElement('div');
@@ -74,7 +79,7 @@ const showCards = (cardsData) => {
          <div class="w-[350px] sm:w-[300px] md:w-[358px] lg:w-[317px] xl:w-[300px] 2xl:w-[360px]">
          <figure class=" mb-5 rounded-lg relative">
             <img class=" w-full h-[200px] rounded-lg" src="${card.thumbnail}" alt="">
-            <div id ="uploadTime${count}" class="  bg-[#171717] rounded text-white w-max absolute bottom-3 right-3">
+            <div id ="" class="  bg-[#171717] rounded text-white w-max absolute bottom-3 right-3">
                <span  class=" uploaded-time ">${timeInHours ? timeInHours : ''}</span>
             </div>
          </figure>
@@ -97,7 +102,6 @@ const showCards = (cardsData) => {
       </div>
          `;
          cardsContainer.appendChild(cardDiv);
-         count++;
       });
    }
 
@@ -127,22 +131,11 @@ const secondToHoursAndMinites = (sec) => {
    const minutes = Math.floor((secondInNumber - (hours * 3600)) / 60);
    // console.log(`${hours}hrs ${minutes}min`);
    if (!secondInNumber) {
-      return ;
+      return;
    } else {
       return `${hours}hrs ${minutes}min ago`;
    }
 }
 
-const removeUploadTimeElement = (id) => {
-   console.log(id);
-   timeUndefinedElementId.push(id);
-   const showTimeElementConteiner = document.getElementById(id);
-   console.log(timeUndefinedElementId);
-   // showTimeelementConteiner.classList.add('hidden')
 
-
-}
-const timeUndefinedElement = () =>{
-   console.log(timeUndefinedElementId);
-}
 

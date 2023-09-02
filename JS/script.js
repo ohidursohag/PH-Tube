@@ -15,9 +15,17 @@ const getCategories = async () => {
 
 
 const sortByView = (target) => {
-   target.classList.add('active')
+   
+
+      if (target.classList.contains('active')) {
+         target.classList.remove('active')
+      } else {
+         target.classList.add('active')
+      }
+
    // target.active = true;
-   console.log(target);
+
 };
+
 
 
