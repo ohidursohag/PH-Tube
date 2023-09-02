@@ -13,9 +13,9 @@ const showCategories = (categoriesData) => {
 
    const categoriesContainer = document.getElementById('categories-container');
    categoriesContainer.innerHTML = '';
-   
+
    categoriesData.forEach(categoryData => {
-      
+
       const categoryDiv = document.createElement('div');
 
       categoryDiv.innerHTML =
@@ -40,18 +40,19 @@ const getCategorydata = async (categoryId, target) => {
    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await response.json();
    showCards(data.data);
+   // getting Cetagory data for Sorting
    itemSort = data.data;
 
 
- if (target) {
-    const categoryItem = document.querySelectorAll('.category');
-    categoryItem.forEach(element => {
-       element.classList.remove('active')
-    })
-    if (target) {
-       target.classList.add('active')
-    }
- }
+   if (target) {
+      const categoryItem = document.querySelectorAll('.category');
+      categoryItem.forEach(element => {
+         element.classList.remove('active')
+      })
+      if (target) {
+         target.classList.add('active')
+      }
+   }
 
 }
 
@@ -87,10 +88,9 @@ const showCards = (cardsData, isSort) => {
          const timeInHours = secondToHoursAndMinites(card?.others?.posted_date);
          // console.log(timeInHours);
          const cardDiv = document.createElement('div');
-         cardDiv.classList.add('mx-auto')
          cardDiv.innerHTML =
             `
-         <div class="w-[340px] sm:w-[300px] md:w-[358px] lg:w-[317px] xl:w-[300px] 2xl:w-[360px]">
+         <div class="w-[350px] sm:w-[300px] md:w-[358px] lg:w-[317px] xl:w-[300px] 2xl:w-[360px]">
          <figure class=" mb-5 rounded-lg relative">
             <img class=" w-full h-[200px] rounded-lg" src="${card.thumbnail}" alt="">
             <div id ="" class="  bg-[#171717] rounded text-white w-max absolute bottom-3 right-3">
@@ -118,15 +118,14 @@ const showCards = (cardsData, isSort) => {
          cardsContainer.appendChild(cardDiv);
       });
    }
-
 }
 
 
+// convert second to Hours & Minutes
 const secondToHoursAndMinites = (sec) => {
    // console.log(sec);
    const secondInNumber = Number(sec);
    // console.log(secondInNumber);
-
 
    const hours = Math.floor(secondInNumber / 3600);
    const minutes = Math.floor((secondInNumber - (hours * 3600)) / 60);
