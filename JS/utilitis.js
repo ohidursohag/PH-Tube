@@ -15,9 +15,7 @@ const showCategories = (categoriesData) => {
    categoriesContainer.innerHTML = '';
 
    categoriesData.forEach(categoryData => {
-
       const categoryDiv = document.createElement('div');
-
       categoryDiv.innerHTML =
          `
          <div onclick="getCategorydata('${categoryData.category_id}',this)"
@@ -40,6 +38,7 @@ const getCategorydata = async (categoryId, target) => {
    const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
    const data = await response.json();
    showCards(data.data);
+
    // getting Cetagory data for Sorting
    itemSort = data.data;
 
@@ -93,8 +92,8 @@ const showCards = (cardsData, isSort) => {
          <div class="w-[350px] sm:w-[300px] md:w-[358px] lg:w-[317px] xl:w-[300px] 2xl:w-[360px]">
          <figure class=" mb-5 rounded-lg relative">
             <img class=" w-full h-[200px] rounded-lg" src="${card.thumbnail}" alt="">
-            <div id ="" class="  bg-[#171717] rounded text-white w-max absolute bottom-3 right-3">
-               <span  class=" uploaded-time ">${timeInHours ? timeInHours : ''}</span>
+            <div  class="uploaded-time bg-[#171717] rounded text-white w-max absolute bottom-3 right-3 px-2 py-1">
+               <span  class="">${timeInHours}</span>
             </div>
          </figure>
          <div class="flex gap-4">
@@ -118,6 +117,14 @@ const showCards = (cardsData, isSort) => {
          cardsContainer.appendChild(cardDiv);
       });
    }
+   // removing Undefined upload time
+   const uploadTimeDiv = document.querySelectorAll('.uploaded-time');
+   uploadTimeDiv.forEach(div => {
+      if (div.children[0].innerHTML === 'undefined') {
+         div.remove();
+      }
+   })
+   console.log(uploadTimeDiv);
 }
 
 
@@ -125,17 +132,17 @@ const showCards = (cardsData, isSort) => {
 const secondToHoursAndMinites = (sec) => {
    // console.log(sec);
    const secondInNumber = Number(sec);
-   // console.log(secondInNumber);
-
    const hours = Math.floor(secondInNumber / 3600);
    const minutes = Math.floor((secondInNumber - (hours * 3600)) / 60);
-   // console.log(`${hours}hrs ${minutes}min`);
+
    if (!secondInNumber) {
       return;
    } else {
       return `${hours}hrs ${minutes}min ago`;
    }
 }
+
+
 
 
 
